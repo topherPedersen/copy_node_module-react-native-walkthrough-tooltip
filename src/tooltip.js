@@ -359,6 +359,8 @@ class Tooltip extends Component {
   renderChildInTooltip = () => {
     const { height, width, x, y } = this.state.childRect;
 
+    console.log(`tooltip lib, x: ${x} y: ${y}`);
+
     const onTouchEnd = () => {
       if (this.props.closeOnChildInteraction) {
         this.props.onClose();
