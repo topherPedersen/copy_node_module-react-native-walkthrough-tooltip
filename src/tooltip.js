@@ -75,6 +75,7 @@ class Tooltip extends Component {
     useReactNativeModal: true,
     topAdjustment: 0,
     accessible: true,
+    highlightedContentXPositionAdjustment: 0,
   };
 
   static propTypes = {
@@ -105,6 +106,7 @@ class Tooltip extends Component {
     useReactNativeModal: PropTypes.bool,
     topAdjustment: PropTypes.number,
     accessible: PropTypes.bool,
+    highlightedContentXPositionAdjustment: PropTypes.number,
   };
 
   constructor(props) {
@@ -357,18 +359,11 @@ class Tooltip extends Component {
   };
 
   renderChildInTooltip = () => {
-    // OLD CODE ON LINE BELOW
-    // const { height, width, x, y } = this.state.childRect;
-
-    // HARD CODE x, y COORDINATES WHICH WE KNOW ARE CORRECT
-    // const { height, width } = this.state.childRect;
-    // const x = 129;
-    // const y = 250;
-
-    // console.log(`tooltip lib, x: ${x} y: ${y}`);
-
     let { height, width, x, y } = this.state.childRect;
-    x = x - 79;
+
+    if (this.props.highlightedContentXPositionAdjustment) {
+      x = x + this.props.highlightedContentXPositionAdjustment;
+    }
 
     const onTouchEnd = () => {
       if (this.props.closeOnChildInteraction) {
