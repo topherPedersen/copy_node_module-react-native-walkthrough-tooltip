@@ -357,9 +357,18 @@ class Tooltip extends Component {
   };
 
   renderChildInTooltip = () => {
-    const { height, width, x, y } = this.state.childRect;
+    // OLD CODE ON LINE BELOW
+    // const { height, width, x, y } = this.state.childRect;
 
-    console.log(`tooltip lib, x: ${x} y: ${y}`);
+    // HARD CODE x, y COORDINATES WHICH WE KNOW ARE CORRECT
+    // const { height, width } = this.state.childRect;
+    // const x = 129;
+    // const y = 250;
+
+    // console.log(`tooltip lib, x: ${x} y: ${y}`);
+
+    let { height, width, x, y } = this.state.childRect;
+    x = x - 79;
 
     const onTouchEnd = () => {
       if (this.props.closeOnChildInteraction) {
